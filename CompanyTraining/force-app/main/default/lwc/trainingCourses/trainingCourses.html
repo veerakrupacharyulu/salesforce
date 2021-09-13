@@ -1,0 +1,159 @@
+<template>
+	<article class="slds-card">
+		
+		<div class="slds-card__header slds-grid">
+			<header class="slds-media slds-media_center slds-has-flexi-truncate">
+			  
+				<div class="slds-media__figure">
+					<span class="slds-icon_container slds-icon-standard-account" title="Training">
+						<svg class="slds-icon slds-icon_small" aria-hidden="true">
+							<use xlink:href="/assets/icons/standard-sprite/svg/symbols.svg#account"></use>
+						</svg>
+						<span class="slds-assistive-text">Training</span>
+					</span>
+				</div>
+				
+				<div class="slds-media__body">
+					<h2 class="slds-card__header-title">
+					  <a href="#" class="slds-card__header-link slds-truncate" title="Trainings">
+						<span>Trainings</span>
+					  </a>
+					</h2>
+				</div>	
+				
+			</header>
+		</div>
+		  
+		  <div class="slds-card__body slds-card__body_inner">
+				<lightning-layout multiple-rows="true">
+			<lightning-layout-item padding="around-small" size="12">
+				<lightning-layout>
+					<lightning-layout-item padding="around-small" size="10">
+						<div class="slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none">
+							
+							<div style="padding:10px">
+								<div>
+									<b>Find a course</b>
+								</div>
+								
+								
+									<lightning-layout>
+										<lightning-layout-item padding="around-small">
+											<div class="header-column">
+												<lightning-combobox
+													name="position"
+													label="Position"
+													value={positionValue}
+													placeholder="Select Position"
+													options={positionOptions}
+													onchange={handlePositionChange} ></lightning-combobox>
+												
+											</div>
+										</lightning-layout-item>
+										<lightning-layout-item padding="around-small">
+											<div class="header-column">
+												
+												<lightning-combobox
+													name="level"
+													label="Level"
+													value={levelValue}
+													placeholder="Select Level"
+													options={levelOptions}
+													onchange={handleLevelChange} ></lightning-combobox>
+												
+											</div>
+										</lightning-layout-item>
+									</lightning-layout>
+
+							</div>
+							
+							<lightning-layout multiple-rows>
+								<template for:each={data} for:item="item">
+									<lightning-layout-item size="3" padding="around-small" key={item.courseId}  id={item.courseId}>
+										<div class="lgc-bg custom-box slds-box" id={item.courseId} data-value={item.courseId} onclick={handleOnTileClick}>
+											
+												<lightning-tile label="" href="/bruce.html" type="media">
+												
+												<!--<lightning-avatar slot="media" src="https://www.lightningdesignsystem.com/assets/images/avatar1.jpg" fallback-icon-name="standard:person_Training" alternative-text="Bruce Wayne"></lightning-avatar>
+												-->
+												<div class='imgBox'>
+													<img class='slds-m-top_small' src={item.courseImage} height='40px' width='40px'></img>
+													
+												</div>
+												
+												<ul class="slds-list_vertical">
+													<li>
+														<h2>
+															<span>{item.courseTitle}</span>
+															<span class="slds-page-header__title slds-truncate" title={item.courseName}>
+																{item.courseName}
+															</span>
+														</h2>
+													</li>
+													<li>
+														<span>{item.courseDescription}</span>
+													</li>
+													<li class="slds-item">
+														<lightning-button-icon icon-name="utility:favorite"  variant="border-filled" alternative-text="favorite" class="slds-m-left_xx-small" title="favorite"></lightning-button-icon>
+														<lightning-button-icon-stateful icon-name="utility:add" disabled={item.isAssigned} id={item.courseId} selected={isAdded} onclick={handleAdd} alternative-text="Answer" class="slds-m-left_xx-small"></lightning-button-icon-stateful>
+														<lightning-button-icon icon-name="utility:bookmark"  variant="border-filled" alternative-text="Bookmark" class="slds-m-left_xx-small" title="Bookmark"></lightning-button-icon>
+													</li>
+												</ul>
+											</lightning-tile>
+										   
+										</div>
+									</lightning-layout-item>
+								</template>
+							</lightning-layout>
+						</div>
+					</lightning-layout-item>
+					<lightning-layout-item padding="around-medium" size="2">				
+						<div class="page-section page-right slds-box slds-p-around_none slds-m-top_x-small slds-m-bottom_medium slds-m-horizontal_none" style="padding:10px">
+							<h2><b>Cource Detail</b></h2>
+							
+							<template if:true={isCoursefound}>
+							<br/>
+							
+							<div class="slds-form">
+								<div class="slds-form-element slds-form-element_stacked">
+								  <label class="slds-form-element__label" for="stacked-input-id-01">Name</label>
+								  <div class="slds-form-element__control">
+									{course.Name}
+								  </div>
+								</div>
+								<div class="slds-form-element slds-form-element_stacked">
+								  <label class="slds-form-element__label" for="stacked-input-id-02">Description</label>
+								  <div class="slds-form-element__control">
+									{course.Description__c}
+								  </div>
+								</div>
+								<div class="slds-form-element slds-form-element_stacked">
+								  <label class="slds-form-element__label" for="stacked-input-id-02">Level</label>
+								  <div class="slds-form-element__control">
+									{course.Level__c}
+								  </div>
+								</div>
+								<div class="slds-form-element slds-form-element_stacked">
+								  <label class="slds-form-element__label" for="stacked-input-id-02">Position</label>
+								  <div class="slds-form-element__control">
+									{course.Position__c}
+								  </div>
+								</div>
+								<div class="slds-form-element slds-form-element_stacked">
+								  <div class="slds-form-element__control">
+									  <div class='imgBox'>
+										  <img class='slds-m-top_small' src={course.Image_URL__c} height='40px' width='40px'></img>
+									  </div>
+								  </div>
+								</div>
+							  </div>
+							  </template>
+
+						</div>
+					</lightning-layout-item>
+				</lightning-layout>
+			</lightning-layout-item>
+		</lightning-layout>
+		  </div>
+		</article>
+	</template>

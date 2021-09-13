@@ -1,0 +1,30 @@
+<template>
+    <lightning-card>
+        <lightning-layout horizontal-align="space">
+            <lightning-layout-item padding="around-small">
+                <img src={courseDetails.Image_URL__c} alt="Course Image"
+                class="slds-align_absolute-center">
+            </lightning-layout-item>
+            <lightning-layout-item >
+               <div>{courseDetails.Level__c}</div>
+                <br/>
+                <div>{courseDetails.Name}</div>
+                <br/>
+                <div>{courseDetails.Description__c}</div>
+                <br/>
+                <div>{courseDetails.Position__c}</div>
+                <br/>
+                <div>{courseDetails.Title__c}</div>
+                <br/>
+            </lightning-layout-item>
+        
+            <lightning-layout-item>
+                 <lightning-button variant="success" label="View Course Details" title="Successful action" onclick={handleShowCourseDetails} class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+            <lightning-layout-item padding="around-small">
+                <lightning-button variant="success" label={courseEnrollmentStatus} title="Successful action" onclick={handleCourseEnrollment} class="slds-m-left_x-small"></lightning-button>
+            </lightning-layout-item>
+            
+        </lightning-layout>
+    </lightning-card>
+</template>

@@ -1,0 +1,37 @@
+<template>
+    <lightning-card>
+    <lightning-layout horizontal-align="center" vertical-align="end" >
+            <lightning-combobox
+            name="position"
+            label="search a position"
+            value={position}
+            placeholder="Select Position"
+            options={positionOptions}
+            onchange={handlePositionChange}
+             >
+            </lightning-combobox>
+            <lightning-combobox
+            name="level"
+            label="search a level"
+            value={level}
+            placeholder="Select Level"
+            options={levelOptions}
+            onchange={handleLevelChange}
+             >
+        </lightning-combobox>
+        </lightning-layout>
+    </lightning-card>
+        <!-- To Display the List of Products-->    
+    
+        <div class="slds-m-around_medium">
+            <template if:true={courseList}>
+                <template for:each={courseList} for:item="course">
+                    <c-courses key={course.Id} course-details={course} ></c-courses>
+            </template>
+          </template>
+        <template if:false={courseList}>
+                <div>No Courses to display, Please add courses </div>
+        </template> 
+           
+        </div>
+    </template>
