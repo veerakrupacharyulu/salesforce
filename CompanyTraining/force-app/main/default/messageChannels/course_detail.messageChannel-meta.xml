@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
+    <masterLabel>CourseDetail</masterLabel>
+    <isExposed>true</isExposed>
+    <description>Message Channel to pass a record Id</description>
+   <lightningMessageFields>
+        <description>This is the Course Name </description>
+        <fieldName>Name</fieldName>
+    </lightningMessageFields>
+    <lightningMessageFields>
+        <fieldName>Description</fieldName>
+        <description>This is the Course Description </description>
+    </lightningMessageFields>
+    <lightningMessageFields> 
+        <fieldName>CourseImage</fieldName>
+        <description>This is the Course Image </description>
+    </lightningMessageFields>
+    <lightningMessageFields>   
+        <fieldName>Level</fieldName>
+        <description>This is the Course Level </description>
+    </lightningMessageFields>
+    <lightningMessageFields>    
+        <fieldName>Position</fieldName>
+        <description>This is the Course Position </description>
+     </lightningMessageFields>
+     <lightningMessageFields>   
+        <fieldName>Title</fieldName>
+        <description>This is the Course Title </description>
+    </lightningMessageFields>
+     <lightningMessageFields>   
+        <fieldName>Link</fieldName>
+        <description>This is the Course Link </description>
+    </lightningMessageFields>
+     <lightningMessageFields>   
+        <fieldName>Category</fieldName>
+        <description>This is the Course Category</description>
+    </lightningMessageFields>
+</LightningMessageChannel>
